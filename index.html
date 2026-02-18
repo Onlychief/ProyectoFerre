@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Ventas</title>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="factura" id="factura">
+  <div class="factura-header">
+
+  <div class="empresa">
+    <h1>MI EMPRESA S.A.S</h1>
+    <p>NIT: 900123456-7</p>
+    <p>Dirección: Calle 123 #45-67</p>
+    <p>Tel: 300 123 4567</p>
+  </div>
+
+  <div class="info-factura">
+    <p><strong>Factura Nº:</strong> <span id="numero-factura"></span></p>
+    <p><strong>Fecha:</strong> <span id="fecha-actual"></span></p>
+    <p>
+  <strong>Vendedor:</strong>
+  <select id="vendedor">
+    <option value="Jhonatan">Jhonatan</option>
+    <option value="Carlos">Carlos</option>
+    <option value="Laura">Laura</option>
+    <option value="Admin">Admin</option>
+  </select>
+</p>
+    <p><strong>Cliente:</strong> <input id="cliente"></p>
+  </div>
+
+</div>
+       <hr>
+
+    <form id="form-venta">
+      <h2>Detalle de la venta</h2>
+
+      <label>Producto</label>
+      <input type="text" id="producto" required>
+
+      <label>Cantidad</label>
+      <input type="number" id="cantidad" required>
+
+      <label>Precio unitario</label>
+      <input type="number" id="precio" required>
+
+      <button type="submit">Agregar producto</button>
+    </form>
+
+    <h2>Productos vendidos</h2>
+
+<table id="tabla-ventas">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio Unit.</th>
+      <th>Subtotal</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="lista-ventas">
+    <!-- Aquí se agregan los productos -->
+  </tbody>
+</table>
+<div class="totales">
+  <p>Subtotal: $<span id="subtotal">0</span></p>
+  <p>IVA (19%): $<span id="iva">0</span></p>
+  <p class="total-final">Total: $<span id="total-general">0</span></p>
+</div>
+  </div>
+
+ <div id="modal-historial" class="modal">
+  <div class="modal-contenido">
+    <span id="cerrar-modal">&times;</span>
+
+    <h2>Historial de Facturas</h2>
+
+    <input type="text" id="buscar-factura" placeholder="Buscar por cliente, vendedor o número...">
+
+    <div style="overflow-x:auto;">
+      <table class="tabla-historial">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="body-historial"></tbody>
+      </table>
+    </div>
+        <div id="detalle-factura"></div>
+  </div>
+</div>
+
+<button id="guardar-factura">Guardar Factura</button>
+<button id="nueva-factura">Nueva factura</button>
+<button onclick="exportarPDF()">Exportar PDF</button>
+<button id="abrir-historial">Ver Historial</button>
+
+  <script src="js/storage.js"></script>
+  <script src="js/facturas.js"></script>
+  <script src="js/main.js"></script>
+  
+</body>
+</html>
